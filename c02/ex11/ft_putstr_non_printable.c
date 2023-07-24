@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 12:45:39 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/24 18:29:53 by fdulkadi         ###   ########.tr       */
+/*   Created: 2023/07/24 16:11:43 by fdulkadi          #+#    #+#             */
+/*   Updated: 2023/07/24 16:42:47 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check(char let)
+#include <unistd.h> 
+
+void	ft_putchar(char c)
 {
-	if ((let >= 48 && let <= 57) || (let >= 65 && let <= 90))
-		return (0);
-	else if (let >= 97 && let <= 122)
-		return (0);
-	return (1);
+	write(1, &c, 1);
 }
 
-char	*ft_strcapitalize(char *str)
+void	ft_putstr_non_printable(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= 65 && str[i] <= 90)
-			str[i] += 32;
+		if (str[i] >= 1 && str[i] <= 31)
+		{
+			ft_putchar('\\');
+			ft_putchar("0123456789abcdef"[str[i] / 16]);
+			ft_putchar("0123456789abcdef"[str[i] % 16]);
+		}
+		else
+			ft_putchar(str[i]);
 		i++;
 	}
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[0] >= 97 && str[0] <= 122)
-			str[0] -= 32;
-		else if (check(str[i - 1]) == 1)
-			if (str[i] >= 97 && str[i] <= 122)
-				str[i] -= 32;
-		i++;
-	}
-	return (str);
 }
