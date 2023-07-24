@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 17:46:16 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/24 12:02:54 by fdulkadi         ###   ########.tr       */
+/*   Created: 2023/07/24 12:39:41 by fdulkadi          #+#    #+#             */
+/*   Updated: 2023/07/24 12:41:18 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_str_is_printable(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (i < n && (src[i] != '\0'))
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (str[i] >= 1 && str[i] <= 31)
+			return (0);
+		else if (str[i] == 127)
+			return (0);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (1);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 17:46:16 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/24 12:02:54 by fdulkadi         ###   ########.tr       */
+/*   Created: 2023/07/24 12:41:55 by fdulkadi          #+#    #+#             */
+/*   Updated: 2023/07/24 12:43:29 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strupcase(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (i < n && (src[i] != '\0'))
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (str[i] >= 97 && str[i] <= 122)
+			str[i] -= 32;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (str);
 }

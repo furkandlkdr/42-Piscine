@@ -6,11 +6,9 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:54:22 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/20 17:45:00 by fdulkadi         ###   ########.tr       */
+/*   Updated: 2023/07/24 11:56:42 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 char	*ft_strcpy(char *dest, char *src)
 {

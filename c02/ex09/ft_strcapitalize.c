@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 17:46:16 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/24 12:02:54 by fdulkadi         ###   ########.tr       */
+/*   Created: 2023/07/24 12:45:39 by fdulkadi          #+#    #+#             */
+/*   Updated: 2023/07/24 12:52:45 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strcapitalize(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (i < n && (src[i] != '\0'))
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (str[i] >= 65 && str[i] <= 90)
+			str[i] += 32;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[0] >= 97 && str[0] <= 122)
+			str[0] -= 32;
+		if (str[i - 1] >= 32 && str[i - 1] <= 47)
+			if (str[i] >= 97 && str[i] <= 122)
+				str[i] -= 32;
+		i++;
+	}
+	return (str);
 }
