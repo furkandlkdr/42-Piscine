@@ -1,0 +1,247 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww8620\viewh19740\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /* ************************************************************************** */\
+\
+char	*ft_strcpy(char *dest, char *src)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (src[i] != '\\0')\
+	\{\
+		dest[i] = src[i];\
+		i++;\
+	\}\
+	dest[i] = '\\0';\
+	return (dest);\
+\}\
+/* ************************************************************************** */\
+\
+char	*ft_strncpy(char *dest, char *src, unsigned int n)\
+\{\
+	unsigned int	i;\
+\
+	i = 0;\
+	while (i < n && src[i] != '\\0')\
+	\{\
+		dest[i] = src[i];\
+		i++;\
+	\}\
+	while (i < n)\
+	\{\
+		dest[i] = '\\0';\
+		i++;\
+	\}\
+	return (dest);\
+\}\
+/* ************************************************************************** */\
+\
+int	ft_str_is_alpha(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] > 0 && str[i] <= 64)\
+			return (0);\
+		else if (str[i] >= 123 && str[i] <= 127)\
+			return (0);\
+		else if (str[i] >= 91 && str[i] <= 96)\
+			return (0);\
+		i++;\
+	\}\
+	return (1);\
+\}\
+/* ************************************************************************** */\
+\
+int	ft_str_is_numeric(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] >= 1 && str[i] <= 47)\
+			return (0);\
+		else if (str[i] >= 58 && str[i] <= 127)\
+			return (0);\
+		i++;\
+	\}\
+	return (1);\
+\}\
+/* ************************************************************************** */\
+\
+int	ft_str_is_lowercase(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] >= 1 && str[i] <= 96)\
+			return (0);\
+		else if (str[i] >= 123 && str[i] <= 127)\
+			return (0);\
+		i++;\
+	\}\
+	return (1);\
+\}\
+/* ************************************************************************** */\
+\
+int	ft_str_is_uppercase(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] >= 1 && str[i] <= 64)\
+			return (0);\
+		else if (str[i] >= 91 && str[i] <= 127)\
+			return (0);\
+		i++;\
+	\}\
+	return (1);\
+\}\
+/* ************************************************************************** */\
+\
+int	ft_str_is_printable(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] >= 1 && str[i] <= 31)\
+			return (0);\
+		else if (str[i] == 127)\
+			return (0);\
+		i++;\
+	\}\
+	return (1);\
+\}\
+/* ************************************************************************** */\
+\
+char	*ft_strupcase(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] >= 97 && str[i] <= 122)\
+			str[i] -= 32;\
+		i++;\
+	\}\
+	return (str);\
+\}\
+/* ************************************************************************** */\
+\
+char	*ft_strlowcase(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] >= 'A' && str[i] <= 'Z')\
+			str[i] += 32;\
+		i++;\
+	\}\
+	return (str);\
+\}\
+/* ************************************************************************** */\
+\
+int	check(char let)\
+\{\
+	if ((let >= 48 && let <= 57) || (let >= 65 && let <= 90))\
+		return (0);\
+	else if (let >= 97 && let <= 122)\
+		return (0);\
+	return (1);\
+\}\
+\
+char	*ft_strcapitalize(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[i] >= 65 && str[i] <= 90)\
+			str[i] += 32;\
+		i++;\
+	\}\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if (str[0] >= 97 && str[0] <= 122)\
+			str[0] -= 32;\
+		else if (check(str[i - 1]) == 1)\
+			if (str[i] >= 97 && str[i] <= 122)\
+				str[i] -= 32;\
+		i++;\
+	\}\
+	return (str);\
+\}\
+/* ************************************************************************** */\
+\
+unsigned int	ft_strlen(char *str)\
+\{\
+	unsigned int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+		i++;\
+	return (i);\
+\}\
+\
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)\
+\{\
+	unsigned int	i;\
+\
+	i = 0;\
+	if (size != 0)\
+	\{\
+		while (i < size - 1 && src[i] != '\\0')\
+		\{\
+			dest[i] = src[i];\
+			i++;\
+		\}\
+		dest[i] = '\\0';\
+	\}\
+	return (ft_strlen(src));\
+\}\
+/* ************************************************************************** */\
+\
+#include <unistd.h>\
+\
+void	ft_putchar(char c)\
+\{\
+	write(1, &c, 1);\
+\}\
+\
+void	ft_putstr_non_printable(char *str)\
+\{\
+	int	i;\
+\
+	i = 0;\
+	while (str[i] != '\\0')\
+	\{\
+		if ((str[i] >= 1 && str[i] <= 31) || str[i] == 127)\
+		\{\
+			ft_putchar('\\\\');\
+			ft_putchar("0123456789abcdef"[str[i] / 16]);\
+			ft_putchar("0123456789abcdef"[str[i] % 16]);\
+		\}\
+		else\
+			ft_putchar(str[i]);\
+		i++;\
+	\}\
+\}}

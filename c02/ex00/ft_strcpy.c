@@ -6,7 +6,7 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 10:54:22 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/24 11:56:42 by fdulkadi         ###   ########.tr       */
+/*   Updated: 2023/07/27 16:58:31 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ char	*ft_strcpy(char *dest, char *src)
 	int	i;
 
 	i = 0;
-	while (src[i] != '\0' && dest[i] != '\0')
+	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;

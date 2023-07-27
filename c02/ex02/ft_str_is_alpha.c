@@ -6,7 +6,7 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:05:36 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/24 12:22:08 by fdulkadi         ###   ########.tr       */
+/*   Updated: 2023/07/27 17:00:52 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int	ft_str_is_alpha(char *str)
 			return (0);
 		else if (str[i] >= 91 && str[i] <= 96)
 			return (0);
+		i++;
 	}
 	return (1);
+}

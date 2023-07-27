@@ -3,18 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
+/*   By: fdulkadi <fdulkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:11:43 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/24 16:42:47 by fdulkadi         ###   ########.tr       */
+/*   Updated: 2023/07/27 19:57:12 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h> 
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
+}
+
+int	ft_char_is_printable(char c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }
 
 void	ft_putstr_non_printable(char *str)
@@ -24,14 +32,14 @@ void	ft_putstr_non_printable(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= 1 && str[i] <= 31)
+		if (ft_char_is_printable(str[i]) == 1)
+			ft_putchar(str[i]);
+		else
 		{
 			ft_putchar('\\');
 			ft_putchar("0123456789abcdef"[str[i] / 16]);
 			ft_putchar("0123456789abcdef"[str[i] % 16]);
 		}
-		else
-			ft_putchar(str[i]);
 		i++;
 	}
 }
