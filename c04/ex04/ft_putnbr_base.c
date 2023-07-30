@@ -6,7 +6,7 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:57:46 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/29 18:53:09 by fdulkadi         ###   ########.fr       */
+/*   Updated: 2023/07/30 15:33:56 by fdulkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,6 @@ int	ft_strlen(char *str)
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
-}
-
-void	ft_convert(char *base, int nbr)
-{
-	if (nbr < 0)
-		nbr *= -1;
-	ft_putchar(base[nbr / (ft_strlen(base) * ft_strlen(base) * ft_strlen(base))]);
-	if (base[nbr / (ft_strlen(base) * ft_strlen(base) * ft_strlen(base))])
-	    nbr -= ft_strlen(base) * ft_strlen(base) *ft_strlen(base);
-	ft_putchar(base[nbr / (ft_strlen(base) * ft_strlen(base))]);
-	if (base[nbr / (ft_strlen(base) * ft_strlen(base))])
-	    nbr -= ft_strlen(base) * ft_strlen(base);
-	ft_putchar(base[nbr / ft_strlen(base)]);
-	ft_putchar(base[nbr % ft_strlen(base)]);
 }
 
 int	ft_check(char *str)
@@ -69,6 +55,17 @@ void	ft_putnbr_base(int nbr, char *base)
 {
 	if (ft_check(base) == 1)
 	{
-		ft_convert(base, nbr);
+		if (nbr < 0)
+		{
+			ft_putchar('-');
+			ft_putnbr_base(-nbr, base);
+		}
+		else if (nbr < ft_strlen(base))
+			ft_putchar(base[nbr]);
+		else
+		{
+			ft_putnbr_base(nbr / ft_strlen(base), base);
+			ft_putnbr_base(nbr % ft_strlen(base), base);
+		}
 	}
 }
