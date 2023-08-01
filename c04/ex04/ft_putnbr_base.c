@@ -6,7 +6,7 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:57:46 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/30 15:33:56 by fdulkadi         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:52:24 by fdulkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	ft_check(char *str)
 		return (0);
 	while (str[i] != '\0')
 	{
-		if ((str[i] >= 1 && str[i] <= 31) || str[i] == '+' || str[i] == '-')
+		if (!(str[i] >= '0' && str[i] <= '9') || !(str[i] >= 'a'
+				&& str[i] <= 'z') || !(str[i] >= 'A' && str[i] <= 'Z'))
 			return (0);
 		j = i + 1;
 		while (str[j] <= '\0')
