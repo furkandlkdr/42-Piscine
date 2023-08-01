@@ -6,9 +6,19 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 20:40:34 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/30 21:31:13 by fdulkadi         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:00:34 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
 
 int	ft_isspace(char c)
 {
@@ -16,6 +26,20 @@ int	ft_isspace(char c)
 		c == '\r')
 		return (1);
 	return (0);
+}
+
+int	search_base(char c, char *base)
+{
+	int	i;
+
+	i = 0;
+	while (base[i] != '\0')
+	{
+		if (c == base[i])
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
 int	ft_check(char *str)
@@ -28,7 +52,7 @@ int	ft_check(char *str)
 		return (0);
 	while (str[i] != '\0')
 	{
-		if ((str[i] >= 1 && str[i] <= 31) || str[i] == '+' || str[i] == '-')
+		if (str[i] <= 31 || str[i] == 127 || str[i] == '+' || str[i] == '-')
 			return (0);
 		j = i + 1;
 		while (str[j] <= '\0')
@@ -57,8 +81,12 @@ int	ft_atoi_base(char *str, char *base)
 			sign *= -1;
 		str++;
 	}
-	while (ft_isdigit(*str))
+	if (ft_check(base) == 0)
+		return (0);
+	while (search_base(*str, base) != -1)
 	{
+		turn = (turn * ft_strlen(base)) + search_base(*str, base);
+		str++;
 	}
-	return (turn);
+	return (turn * sign);
 }
