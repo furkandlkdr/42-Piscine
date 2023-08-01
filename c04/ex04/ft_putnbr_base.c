@@ -6,7 +6,7 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:57:46 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/08/01 15:52:24 by fdulkadi         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:36:04 by fdulkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int	ft_check(char *str)
 		return (0);
 	while (str[i] != '\0')
 	{
-		if (!(str[i] >= '0' && str[i] <= '9') || !(str[i] >= 'a'
-				&& str[i] <= 'z') || !(str[i] >= 'A' && str[i] <= 'Z'))
+		if (str[i] == '+' || str[i] == '-')
 			return (0);
 		j = i + 1;
 		while (str[j] <= '\0')
@@ -66,7 +65,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		else
 		{
 			ft_putnbr_base(nbr / ft_strlen(base), base);
-			ft_putnbr_base(nbr % ft_strlen(base), base);
+			ft_putchar(base[nbr % ft_strlen(base)]);
 		}
 	}
 }
