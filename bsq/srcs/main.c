@@ -12,7 +12,7 @@ void    ft_putstr(char *str)
         i++;
     }
 }
-
+int *ft_start(char *str);
 int main(int argc, char *argv[])
 {
     int i;
@@ -28,13 +28,11 @@ int main(int argc, char *argv[])
 
             j = 0;
             map_str = ft_readfile(argv[i]);
-            map_arr = ft_matrix(map_str, ft_start(map_str), 1);
+            map_arr = ft_matrix(map_str, (ft_start(map_str)[0]), 1);
             while(j < find_column(map_str,1))
-            {
-                ft_putstr(map_arr[j]);
-                j++;
-            }
+                ft_putstr(map_arr[j++]);
             ft_putstr("\nFFFFFFFFFFFFFFFFFFFFFFFFFFF\n");
+            ft_solve(map_arr, find_row(map_str, 1));
             free(map_str);
             free(map_arr);
             i++;
@@ -51,9 +49,6 @@ int main(int argc, char *argv[])
 
         j = 0;
         while(j < find_column(map, 0))
-        {
-            ft_putstr(map_arr[j]);
-            j++;
-        }
+            ft_putstr(map_arr[j++]);
     }
 }

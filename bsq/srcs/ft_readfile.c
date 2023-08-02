@@ -1,14 +1,28 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int ft_start(char *str)
+int ft_isdigit(char *str);
+
+int *ft_start(char *str)
 {
     int i;
+    int j;
+    int *elem;
 
+    elem = malloc(4 * sizeof(int));
     i = 0;
+    j = 1;
     while(str[i] != '\n')
+    {
+        if (ft_isdigit(str[i]) == 0 && j < 3)
+        {
+            elem[j] = str[i];
+            j++;
+        }
         i++;
-    return (i + 1);
+    }
+    elem[0] = i + 1;
+    return (elem);
 }
 
 int find_row(char *str, int isfile)
@@ -18,7 +32,7 @@ int find_row(char *str, int isfile)
 
     i = 0;
     if (isfile == 1)
-        i = ft_start(*str);
+        i = (ft_start(*str)[0]);
     row = 0;
     while(1)
     {
@@ -30,7 +44,7 @@ int find_row(char *str, int isfile)
     return (row);
 }
 
-int find_column(char *str, int isfile, char block, char empt)
+int find_column(char *str, int isfile, char *elem)
 {
     int i;
     int col;
@@ -39,7 +53,7 @@ int find_column(char *str, int isfile, char block, char empt)
     col = 0;
     while(str[i] != '\n' && isfile == 1)
         i++;
-    while(str[i] == block || str[i] == empt || str[i] == '\n')
+    while(str[i] == elem[0] || str[i] == elem[1] || str[i] == '\n')
     {
         if(str[i] == '\n')
             col++;
@@ -60,17 +74,17 @@ char    *readfile(char *file)
     return (c);
 }
 
-char **ft_matrix(char *str, int start_pos, int isfile, char block, char empt)
+char **ft_matrix(char *str, int start_pos, int isfile, char *elem)
 {
     char **arr;
     int i;
     int j;
     int add_s;
 
-    arr = malloc(sizeof(int *) * find_column(str,isfile, block, empt));
+    arr = malloc(sizeof(int *) * find_column(str,isfile, elem));
     i = 0;
     add_s = start_pos;
-    while (i < find_column(str, isfile, block, empt))
+    while (i < find_column(str, isfile, elem))
     {
         arr[i] = malloc(sizeof(char *) * (find_row(str, isfile) + 1));
         j = 0;
@@ -79,9 +93,12 @@ char **ft_matrix(char *str, int start_pos, int isfile, char block, char empt)
             if (str[add_s] != '\n')
                 arr[i][j] = str[add_s];
             else
+            {
                 arr[i][j] = '\0';
                 add_s++;
                 j++;
+            }
         }
     }
+    return (arr);
 }
