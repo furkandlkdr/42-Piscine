@@ -6,7 +6,7 @@
 /*   By: fdulkadi <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 10:19:31 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/08/02 10:21:56 by fdulkadi         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:46:38 by fdulkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+	write(1, "\n", 1);
 }
 
 int	main(int argc, char *argv[])
