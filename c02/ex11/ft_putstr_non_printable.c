@@ -6,7 +6,7 @@
 /*   By: fdulkadi <fdulkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:11:43 by fdulkadi          #+#    #+#             */
-/*   Updated: 2023/07/27 20:11:19 by fdulkadi         ###   ########.tr       */
+/*   Updated: 2023/07/27 19:57:12 by fdulkadi         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_putstr_non_printable(char *str)
 		else
 		{
 			ft_putchar('\\');
-			ft_putchar("0123456789abcdef"[(unsigned char)str[i] / 16]);
-			ft_putchar("0123456789abcdef"[(unsigned char)str[i] % 16]);
+			ft_putchar("0123456789abcdef"[str[i] / 16]);
+			ft_putchar("0123456789abcdef"[str[i] % 16]);
 		}
 		i++;
 	}
